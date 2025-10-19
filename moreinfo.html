@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Risen Christ Redeemer</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Times New Roman", serif;
+    }
+
+    body {
+      background-color: #f7f4f1;
+      color: #2d2a26;
+      font-size: 24px;
+      line-height: 1.8;
+    }
+
+    /* Header */
+    header {
+      background-color: #5c3d2e;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 60px;
+    }
+    .header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* space between logo and text */
+}
+
+.header-left h1 {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.logo-img {
+  height: 60px; /* adjust to fit your header */
+  width: auto;
+}
+
+
+    header h1 {
+      font-size: 40px;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 7px;
+      font-size: 15px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Main Section */
+    main {
+      padding: 70px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .info-section {
+      width: 90%;
+      max-width: 1000px;
+      text-align: center;
+    }
+
+    .info-header h2 {
+      font-size: 48px;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 50px;
+      color: #5c3d2e;
+    }
+
+    .info-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .info-buttons button {
+      font-size: 24px;
+      background-color: #f4f4f4;
+      border: 3px solid #5c3d2e;
+      border-radius: 20px;
+      padding: 25px 60px;
+      color: #3b2a1b;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    .info-buttons button:hover {
+      background-color: #5c3d2e;
+      color: #fff;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #5c3d2e;
+      color: white;
+      padding: 50px 60px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      font-size: 20px;
+      line-height: 1.7;
+    }
+
+    footer .logo {
+      width: 40%;
+    }
+
+    footer .links, footer .contact {
+      width: 25%;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      margin-top: 8px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .social-icons {
+      margin-top: 25px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .social-icons a {
+      color: white;
+      font-size: 26px;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #d1c1a1;
+    }
+    .social-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 40%;
+  object-fit: cover;
+  background-color: transparent;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+    /* ===== MODAL STYLES ===== */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 5% auto;
+      padding: 40px;
+      border-radius: 25px;
+      width: 80%;
+      max-width: 900px;
+      color: #2d2a26;
+      position: relative;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 40px;
+      color: #5c3d2e;
+      cursor: pointer;
+    }
+
+    .modal-content h2 {
+      text-align: center;
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 40px;
+      color: #2d2a26;
+    }
+
+    .contact-card {
+      display: flex;
+      align-items: center;
+      background-color: #7a5a43;
+      color: #fff;
+      border-radius: 40px;
+      padding: 20px 30px;
+      margin-bottom: 25px;
+      gap: 20px;
+    }
+
+    .contact-card img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+    }
+
+    .contact-card h3 {
+      font-size: 24px;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .contact-card p {
+      font-size: 20px;
+    }
+
+    /* Image Modal */
+    .modal-image-content {
+      background-color: #fff;
+      margin: 5% auto;
+      padding: 30px;
+      border-radius: 30px;
+      width: 80%;
+      max-width: 800px;
+      position: relative;
+      text-align: center;
+    }
+
+    .modal-image-content img {
+      width: 100%;
+      border-radius: 30px;
+    }
+
+    @media (max-width: 900px) {
+      header, footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 25px;
+      }
+
+      footer .logo, footer .links, footer .contact {
+        width: 100%;
+        margin-bottom: 25px;
+      }
+
+      nav a {
+        display: block;
+        margin: 10px 0;
+      }
+
+      .info-buttons button {
+        width: 80%;
+        padding: 20px 40px;
+        font-size: 22px;
+      }
+
+      .contact-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .contact-card img {
+        margin-bottom: 10px;
+      }
+    }
+     .footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.footer-img {
+  width: 60px; /* Match header logo height */
+  height: auto;
+  object-fit: contain;
+}
+  </style>
+</head>
+<body>
+  <audio autoplay loop>
+  <source src="Oceans__Instrumental_(256k).mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+  <!-- Header -->
+  <header>
+    <div class="header-left">
+    <img src="LOGO JUST REMOVE BG.png" alt="Logo" class="logo-img">
+    <h1>The Risen Christ Redeemer</h1>
+  </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="location.html">Location</a>
+      <a href="Events&Announcement.html">Events & Announcements</a>
+      <a href="Reviews.html">Reviews</a>
+      <a href="moreinfo.html">More Info</a>
+    </nav>
+  </header>
+
+  <!-- Main Section -->
+  <main>
+    <section class="info-section">
+      <div class="info-header">
+        <h2>MORE INFORMATION</h2>
+      </div>
+
+      <div class="info-buttons">
+        <button id="emergencyBtn">Emergency Contact Number</button>
+        <button id="hoursBtn">Operating Hours</button>
+        <button id="massBtn">Mass Schedule</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+  <div class="logo">
+  <div class="footer-logo">
+    <img src="LOGO JUST REMOVE BG.png" alt="Footer Logo" class="footer-img">
+    <h3>The Risen Christ Redeemer</h3>
+  </div>
+  <p>The Pilgrimage Destination of Rosario, Batangas</p>
+
+  <div class="social-icons">
+      <a href="https://www.facebook.com/profile.php?id=61581121648890" target="_blank">
+        <img src="fblogo-removebg-preview.png" alt="Facebook" class="social-img">
+      </a>
+      <a href="https://x.com/risenredeemer_" target="_blank">
+        <img src="xlogo-removebg-preview.png" alt="Twitter" class="social-img">
+      </a>
+      <a href="https://www.instagram.com/the_risen_christ_redeemer" target="_blank">
+        <img src="instagramlogo-removebg-preview.png" alt="Instagram" class="social-img">
+      </a>
+      <a href="https://www.tiktok.com/@therisenchristred" target="_blank">
+        <img src="tiktoklogos-removebg-preview.png" alt="TikTok" class="social-img">
+      </a>
+      <a href="https://www.youtube.com/@therisenchristredeemer" target="_blank">
+        <img src="yt_logo-removebg-preview.png" alt="YouTube" class="social-img">
+      </a>
+    </div>
+  </div>
+
+  <div class="links">
+    <h4>Pages</h4>
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="location.html">Location</a>
+    <a href="Events&Announcement.html">Events & Announcements</a>
+    <a href="Reviews.html">Reviews</a>
+    <a href="moreinfo.html">More Info</a>
+  </div>
+
+  <div class="contact">
+    <h4>Contact</h4>
+    <p>R6X4+9RF, G. Recto St., Rosario, Batangas</p>
+    <p>therisenchristredeemer@gmail.com</p>
+    <p>(123) 456 - 7890</p>
+  </div>
+</footer>
+
+  <!-- Emergency Contact Modal -->
+  <div id="emergencyModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>EMERGENCY CONTACT NUMBERS</h2>
+
+      <div class="contact-card">
+        <img src="police.jpg" alt="PNP Logo">
+        <div>
+          <h3>Municipal Police Station (PNP)</h3>
+          <p>0927-237-0519<br>0998-598-5699</p>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <img src="redcross.jpg" alt="Red Cross Logo">
+        <div>
+          <h3>Philippine Red Cross</h3>
+          <p>0917-142-9378</p>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <img src="bfp.jpg" alt="Fire Station Logo">
+        <div>
+          <h3>Municipal Fire Station (BFP)</h3>
+          <p>0915-602-4435</p>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <img src="municipality.jpg" alt="MDRRMO Logo">
+        <div>
+          <h3>Municipal Disaster Risk Reduction and Management Office (Rescue)</h3>
+          <p>0931-014-6340</p>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <img src="unilab.jpg" alt="Ambulance Logo">
+        <div>
+          <h3>Ambulance Service (Patient Transport)</h3>
+          <p>0969-643-2583</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Operating Hours Modal -->
+  <div id="hoursModal" class="modal">
+    <div class="modal-image-content">
+      <span class="close">&times;</span>
+      <img src="Screenshot (85).png" alt="Operating Hours">
+    </div>
+  </div>
+
+  <!-- Mass Schedule Modal -->
+  <div id="massModal" class="modal">
+    <div class="modal-image-content">
+      <span class="close">&times;</span>
+      <img src="Screenshot (86).png" alt="Sunday Mass Schedule">
+    </div>
+  </div>
+
+  <script>
+    // Get modals and buttons
+    const emergencyModal = document.getElementById("emergencyModal");
+    const emergencyBtn = document.getElementById("emergencyBtn");
+
+    const hoursModal = document.getElementById("hoursModal");
+    const hoursBtn = document.getElementById("hoursBtn");
+
+    const massModal = document.getElementById("massModal");
+    const massBtn = document.getElementById("massBtn");
+
+    const closeBtns = document.querySelectorAll(".close");
+
+    // Button click handlers
+    emergencyBtn.onclick = () => (emergencyModal.style.display = "block");
+    hoursBtn.onclick = () => (hoursModal.style.display = "block");
+    massBtn.onclick = () => (massModal.style.display = "block");
+
+    // Close buttons
+    closeBtns.forEach(btn => {
+      btn.onclick = () => {
+        emergencyModal.style.display = "none";
+        hoursModal.style.display = "none";
+        massModal.style.display = "none";
+      };
+    });
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      if (event.target === emergencyModal || event.target === hoursModal || event.target === massModal) {
+        emergencyModal.style.display = "none";
+        hoursModal.style.display = "none";
+        massModal.style.display = "none";
+      }
+    };
+  </script>
+</body>
+</html>
