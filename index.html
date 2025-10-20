@@ -29,51 +29,64 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 60px;
+      padding: 10px 40px;
       position: sticky;
       top: 0;
       z-index: 10;
+      flex-wrap: wrap;
     }
 
     .header-left {
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 10px;
+      flex-shrink: 0;
     }
 
     .header-left h1 {
-      font-size: 40px;
+      font-size: 28px;
       font-weight: bold;
+      white-space: nowrap;
     }
 
     .logo-img {
-      height: 60px;
+      height: 45px;
       width: auto;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+      flex: 1;
     }
 
     nav a {
       color: white;
       text-decoration: none;
-      margin: 0 7px;
       font-size: 15px;
+      padding: 4px 8px;
+      transition: color 0.3s ease;
     }
 
     nav a:hover {
       text-decoration: underline;
+      color: #e0cbb7;
     }
 
     /* HERO SECTION */
     .hero {
       position: relative;
       width: 100%;
-      height: 100vh;
+      height: 90vh;
       overflow: hidden;
     }
 
     .hero img {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Makes image fully cover area, no black bars */
+      object-fit: cover; /* Natural fit, not zoomed in */
       position: absolute;
       top: 0;
       left: 0;
@@ -112,15 +125,14 @@
     }
 
     .history-img {
-  float: right;
-  width: 60%;
-  height: 370px;
-  object-fit: cover;
-  max-width: 600px;
-  border-radius: 8px;
-  margin: 10px 0 10px 20px; /* top, right, bottom, left */
-}
-
+      float: right;
+      width: 60%;
+      height: 370px;
+      object-fit: cover;
+      max-width: 600px;
+      border-radius: 8px;
+      margin: 10px 0 10px 20px;
+    }
 
     .about-text,
     .history-text {
@@ -135,9 +147,9 @@
 
     .about-text p,
     .history-text p {
-  text-align: justify;
-  text-justify: inter-word;
-}
+      text-align: justify;
+      text-justify: inter-word;
+    }
 
     /* PHOTOS SECTION */
     .photos {
@@ -179,20 +191,6 @@
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
-    @media (max-width: 900px) {
-      .photo-layout {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .column.left img,
-      .column.right img,
-      .column.middle img {
-        width: 90%;
-        height: auto;
-      }
-    }
-
     .video {
       text-align: center;
       margin-top: 30px;
@@ -220,22 +218,21 @@
     }
 
     .activity-grid {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  flex-wrap: nowrap; /* keeps them in one line */
-  scroll-behavior: smooth;
-}
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      flex-wrap: nowrap;
+      scroll-behavior: smooth;
+    }
 
-.flip-card {
-  flex: 0 0 auto; /* prevents shrinking */
-  width: 200px;
-  height: 200px;
-  perspective: 1000px;
-  cursor: pointer;
-}
-
+    .flip-card {
+      flex: 0 0 auto;
+      width: 200px;
+      height: 200px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
 
     .flip-card-inner {
       position: relative;
@@ -312,62 +309,79 @@
       gap: 20px;
     }
 
-    .social-icons a {
-      color: white;
-      font-size: 26px;
-      transition: color 0.3s ease;
-    }
-
-    .social-icons a:hover {
-      color: #d1c1a1;
-    }
     .social-img {
-  width: 40px;
-  height: 40px;
-  border-radius: 40%;
-  object-fit: cover;
-  background-color: transparent;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
+      width: 40px;
+      height: 40px;
+      border-radius: 40%;
+      object-fit: cover;
+      background-color: transparent;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
 
+    /* ✅ RESPONSIVE FIXES */
     @media (max-width: 900px) {
-      header, footer {
+      header {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
+        padding: 10px 20px;
+      }
+
+      .header-left h1 {
+        font-size: 20px;
+      }
+
+      .logo-img {
+        height: 40px;
+      }
+
+      nav {
+        width: 100%;
+        justify-content: flex-end;
+        gap: 5px;
+        margin-top: 8px;
+      }
+
+      nav a {
+        font-size: 13px;
+        padding: 4px 6px;
+      }
+
+      .hero {
+        height: 55vh;
+      }
+
+      .hero img {
+        object-fit: contain; /* Prevents zoom-in effect */
       }
 
       section {
         padding: 20px;
       }
 
+      footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
       footer .logo, footer .links, footer .contact {
         width: 100%;
-        text-align: center;
         margin-bottom: 20px;
       }
-
-
-      .flip-card {
-        max-width: 90%;
-      }
-
-      .history img {
-        width: 90%;
-      }
     }
+
     .footer-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-}
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
 
-.footer-img {
-  width: 60px; /* Match header logo height */
-  height: auto;
-  object-fit: contain;
-}
-
+    .footer-img {
+      width: 60px;
+      height: auto;
+      object-fit: contain;
+    }
   </style>
 </head>
 <body>
@@ -375,7 +389,6 @@
   <!-- Background Music -->
   <audio autoplay loop>
     <source src="Oceans__Instrumental_(256k).mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
   </audio>
 
   <header>
@@ -387,16 +400,16 @@
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="location.html">Location</a>
-      <a href="Events&Announcement.html">Events & Announcements</a>
+      <a href="Events&Announcement.html">Events</a>
       <a href="reviews.html">Reviews</a>
       <a href="moreinfo.html">More Info</a>
     </nav>
   </header>
 
   <section class="hero">
-    <img src="HOME CAROUSEL 1.png" class="active" alt="Slide 1">
-    <img src="HOME CAROUSEL 2.png" alt="Slide 2">
-    <img src="HOME CAROUSEL 3.png" alt="Slide 3">
+    <img src="HOME CAROUSEL 1.png" class="active">
+    <img src="HOME CAROUSEL 2.png">
+    <img src="HOME CAROUSEL 3.png">
   </section>
 
   <div class="welcome">WELCOME</div>
@@ -567,13 +580,6 @@
       index = (index + 1) % slides.length;
       slides[index].classList.add("active");
     }, 4000);
-
-    const flipCards = document.querySelectorAll(".flip-card");
-    flipCards.forEach(card => {
-      card.addEventListener("click", () => {
-        card.classList.toggle("flip");
-      });
-    });
   </script>
 
 </body>
